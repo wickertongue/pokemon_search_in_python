@@ -15,7 +15,7 @@ source .venv/bin/activate
 
 Install necessary dependencies:
 ```
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## How to Run in LocalDev

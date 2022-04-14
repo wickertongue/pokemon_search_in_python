@@ -1,7 +1,7 @@
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, render_template
 
 home = Blueprint('home', __name__)
 
 @home.route('/')
 def return_home():
-    return "<h1>Pokemon Search!</h1>"
+    return render_template('homepage.html')
