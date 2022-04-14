@@ -2,12 +2,30 @@
 <html>
 
 <head>
-    <title>Pokemon Search</title>
+	<title>Pokemon Search</title>
+	<link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
-    <h1>Pokemon Search!</h1>
-    <p>Welcome to the Pokemon Search page!</p>
+	<div class="mainApp">
+		<h1>Pokemon Search!</h1>
+		<p>Welcome to the Pokemon Search page!</p>
+		<div>
+			<div id="pokemon-search">
+				<form>
+					<input type="text" placeholder="search for a Pokemon...">
+				</form>
+			</div>
+
+			<div id="pokemon-select">
+				<select>
+					<option disabled value="">Select a Pokemon...</option>
+					<option :pokemon='pokemon' :key="index" :value="pokemon">
+					</option>
+				</select>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

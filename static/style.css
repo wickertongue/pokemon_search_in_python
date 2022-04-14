@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+.mainApp {
+  margin: 10px;     
+  padding: 20px;
+  background-color: #ffcb05;
+  border: 10px solid #2a75bb;
+}
+
+#pokemon-search {
+	padding: 10px;
+}
+
+#pokemon-select {
+	padding: 10px;
+}
+
+h1 {
+  font-family: 'Press Start 2P';
+}

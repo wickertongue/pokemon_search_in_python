@@ -23,6 +23,7 @@ pip install -r requirements.txt
 If virtual python environment is activated, run:
 
 ```bash
+export FLASK_ENV=development
 flask run
 ```
 
