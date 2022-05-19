@@ -9,8 +9,20 @@
 <body>
 	<h1>Present Pokemon</h1>
 	<p>You searched for: {{ found_pokemon.name }}</p>
-	<p>{{ found_pokemon.name }}'s height is: {{ found_pokemon.height }}</p>
-	<p>{{ found_pokemon.name }}'s weight is: {{ found_pokemon.weight }}</p>
+	<table>
+		<tr>  
+			<th>Height</th>
+			<td>{{ found_pokemon.height }} decimeters</td>
+		</tr>
+		<tr>
+			<th>Weight</th>
+			<td>{{ found_pokemon.weight }} hectograms</td>
+		</tr>
+		<tr>
+			<th>Species</th>
+			<td>{{ found_pokemon.species.name }}</td>
+		</tr>
+	</table>
 </body>
 
 </html>
