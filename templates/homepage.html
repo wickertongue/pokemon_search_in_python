@@ -15,8 +15,19 @@
 				<input type="submit" value="submit" />
 			</form>
 		</div>
+
+		<div id="pokemon-select">
+      <select v-on:change="handleSelect" v-model="selectedPokemon">
+        <option disabled value="">Select a Pokemon...</option>
+				{% for pokemon in found_pokemon %}
+        <option pokemon={{ pokemon }} key="index" value={{ pokemon }}>{{ pokemon.name }}</option>
+				{% endfor %}
+      </select>
+    </div>
+
 		{% if found_pokemon %}
 		<div>
+			<h3>{{ found_pokemon.name.capitalize() }}</h3>
 			<table>
 				<tr>
 					<th>Height</th>
@@ -32,7 +43,7 @@
 				</tr>
 			</table>
 
-			<h4>elemental types:</h4>
+			<h4>Elemental types:</h4>
 			<table>
 				<tr>
 					{% for object in found_pokemon.types %}
@@ -42,19 +53,19 @@
 					{% endfor %}
 				</tr>
 			</table>
-
 		</div>
-		{% endif %}
-		<h4>images:</h4>
+
+			<h4>Images:</h4>
 			<div>
 				{% if found_pokemon.sprites %}
-					{% for image in found_pokemon.sprites %}
-					<p>image found</p>	
-					<img :src="image">
-					{% endfor %} 
+					{% for name, url in found_pokemon.sprites.items() %}
+						{% if (url != None) and ("https" in url) %}
+							<img src={{ url }}>
+						{% endif %}
+					{% endfor %}
 				{% endif %}
 			</div>
-		</div>
+			{% endif %}
 	</div>
 </body>
 
