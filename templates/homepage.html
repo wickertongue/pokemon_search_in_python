@@ -19,12 +19,11 @@
 		<div id="pokemon-select">
       <select v-on:change="handleSelect" v-model="selectedPokemon">
         <option disabled value="">Select a Pokemon...</option>
-				{% for pokemon in found_pokemon %}
-        <option pokemon={{ pokemon }} key="index" value={{ pokemon }}>{{ pokemon.name }}</option>
+				{% for pokemon in all_pokemon %}
+        	<option value={{ pokemon }} key={{ pokemon.url }}>{{ pokemon.name }}</option>
 				{% endfor %}
       </select>
     </div>
-
 		{% if found_pokemon %}
 		<div id="pokemon-detail">
 			<h3>{{ found_pokemon.name.capitalize() }}</h3>
@@ -55,17 +54,17 @@
 			</table>
 		</div>
 
-			<h4>Images:</h4>
-			<div>
-				{% if found_pokemon.sprites %}
-					{% for name, url in found_pokemon.sprites.items() %}
-						{% if (url != None) and ("https" in url) %}
-							<img src={{ url }}>
-						{% endif %}
-					{% endfor %}
-				{% endif %}
-			</div>
+		<h4>Images:</h4>
+		<div>
+			{% if found_pokemon.sprites %}
+				{% for name, url in found_pokemon.sprites.items() %}
+					{% if (url != None) and ("https" in url) %}
+						<img src={{ url }}>
+					{% endif %}
+				{% endfor %}
 			{% endif %}
+		</div>
+	{% endif %}
 	</div>
 </body>
 

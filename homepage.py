@@ -21,7 +21,7 @@ def return_home():
 
         data = requests.get(get_pokemon_url(search_term)).json()
 
-        return render_template('homepage.html', found_pokemon = data)
+        return render_template('homepage.html', found_pokemon = data, all_pokemon = all_pokemon)
         # return redirect(url_for('pokemon', search_term = search_term))
     else: 
         # do something
