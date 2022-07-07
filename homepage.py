@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, json
+from flask import Flask, Blueprint, render_template, request
 import requests
 
 home = Blueprint('home', __name__)
@@ -22,16 +22,6 @@ def return_home():
         data = requests.get(get_pokemon_url(search_term)).json()
 
         return render_template('homepage.html', found_pokemon = data, all_pokemon = all_pokemon)
-        # return redirect(url_for('pokemon', search_term = search_term))
     else: 
         # do something
         return render_template('homepage.html')
-
-
-# def fetch_pokemon(pokemon):
-
-#     response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon}")
-#     data = response.json()
-
-#     pokemon_data = json.dumps(data)
-#     return(data)
