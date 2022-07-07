@@ -1,71 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" style="width:600px">
+{% extends "base.html" %}
 
-<head>
-	<title>Pokemon Search</title>
-	<link rel="stylesheet" href="/static/style.css">
-</head>
+{% block header %} Pokemon Search! {% endblock %}
 
-<body>
-	<div class="mainApp">
-		<h1>Pokemon Search!</h1>
-		<div id="pokemon-search">
-			<form method="POST">
-				<input type="text" name="searchedPokemon" placeholder="search for a Pokemon..." />
-				<input type="submit" value="submit" />
-			</form>
-		</div>
+{% block pokemonSearchbar %}
+  <form method="POST">
+    <input type="text" name="searchedPokemon" placeholder="search for a Pokemon..." />
+    <input type="submit" value="submit" />
+  </form>
+{% endblock %}
 
-		<div id="pokemon-select">
-      <select v-on:change="handleSelect" v-model="selectedPokemon">
-        <option disabled value="">Select a Pokemon...</option>
-				{% for pokemon in all_pokemon %}
-        	<option value={{ pokemon }} key={{ pokemon.url }}>{{ pokemon.name }}</option>
-				{% endfor %}
-      </select>
-    </div>
-		{% if found_pokemon %}
-		<div id="pokemon-detail">
-			<h3>{{ found_pokemon.name.capitalize() }}</h3>
-			<table>
-				<tr>
-					<th>Height</th>
-					<td>{{ found_pokemon.height }} decimeters</td>
-				</tr>
-				<tr>
-					<th>Weight</th>
-					<td>{{ found_pokemon.weight }} hectograms</td>
-				</tr>
-				<tr>
-					<th>Species</th>
-					<td>{{ found_pokemon.species.name }}</td>
-				</tr>
-			</table>
-
-			<h4>Elemental types:</h4>
-			<table>
-				<tr>
-					{% for object in found_pokemon.types %}
-					<td>
-						<span>{{ object.type.name }}</span>
-					</td>
-					{% endfor %}
-				</tr>
-			</table>
-		</div>
-
-		<h4>Images:</h4>
-		<div>
-			{% if found_pokemon.sprites %}
-				{% for name, url in found_pokemon.sprites.items() %}
-					{% if (url != None) and ("https" in url) %}
-						<img src={{ url }}>
-					{% endif %}
-				{% endfor %}
-			{% endif %}
-		</div>
-	{% endif %}
-	</div>
-</body>
-
-</html>
+{% block pokemonSelect %}
+  <select v-on:change="handleSelect" v-model="selectedPokemon">
+    <option disabled value="">Select a Pokemon...</option>
+    {% for pokemon in all_pokemon %}
+      <option value={{ pokemon }} key={{ pokemon.url }}>{{ pokemon.name }}</option>
+    {% endfor %}
+  </select>
+{% endblock %}
