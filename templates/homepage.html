@@ -11,14 +11,20 @@
     </form>
   </div>
   
-  <div id="pokemon-select">
-    <select v-on:change="handleSelect" v-model="selectedPokemon">
-      <option disabled value="">Select a Pokemon...</option>
-      {% for pokemon in all_pokemon %}
-        <option value={{ pokemon }} key={{ pokemon.url }}>{{ pokemon.name }}</option>
-      {% endfor %}
-    </select>
-  </div>
+  <form method="POST">
+    <div id="pokemon-select">
+      <select name="searchedPokemon">
+        <option selected disabled hidden>Select a Pokemon...</option>
+        {% if found_pokemon %}
+          <option selected disabled hidden>{{ found_pokemon.name }}</option>
+        {% endif %}
+        {% for pokemon in all_pokemon %}
+          <option value={{ pokemon.name }} key={{ pokemon.url }}>{{ pokemon.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="submit" />
+    </div>
+  </form>
 
   {% if found_pokemon %}
   <div id="pokemon-detail">
