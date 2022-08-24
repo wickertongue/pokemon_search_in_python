@@ -43,3 +43,5 @@ Pages that are rendered client side have negatives, such as SEO / search engine 
 
 Here, I have created an app using Flask, and Jinja templating, in attempt to replicate a Vue application - but cannot achieve the same level of interactivity due to Flask being an SSR, and Vue being a CSR. So, I use form HTML tags to send a request to the server, which then responds, but the user has to 'submit' (POST) the data - i.e. via a button. In Vue, this was not the case as the data had been loaded on the client side, and so could be accessed immediately within the same page, without the need to 'submit' (POST) data back to the server.
 
+To achieve the same interactivity as in the Vue app, I would need to use a CSR framework/library (Vue, React). This would then call the Flask backend for data when needed. Ultimately, this would be a bad idea in this codebase, as the CSR could request the API directly, rather than through the Flask backend (which is essentially acting as a proxy for the API right now).
+
